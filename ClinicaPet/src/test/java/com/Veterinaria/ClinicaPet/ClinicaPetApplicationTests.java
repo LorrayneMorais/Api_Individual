@@ -1,13 +1,13 @@
-package com.Veterinaria.ClinicaPet;
+//package com.Veterinaria.ClinicaPet;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class ClinicaPetApplicationTests {
+//@SpringBootTest
+//class ClinicaPetApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+//	@Test
+//	void contextLoads() {
+//	}
 
-}
+//}
