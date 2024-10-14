@@ -1,4 +1,4 @@
-package com.veterinaria.clinicapet.configs;
+package br.com.example.demo.configs;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,18 +27,18 @@ public class SwaggerConfig {
 		server.setDescription("Development Server");
 
 		Contact contact = new Contact();
-		contact.setEmail("lorrayne.moraisb@gmail.com");
-		contact.setName("Lorrayne Morais");
-		contact.setUrl("lorrayne.net");
+		contact.setEmail("demo@gmail.com");
+		contact.setName("demo");
+		contact.setUrl("demo.net");
 
 		License license = new License();
 		license.setName("Apache License 2.0");
 		license.setUrl("https://www.apache.org/licenses/LICENSE-2.0.html");
 
 		Info info = new Info();
-		info.setTitle("clinicapet API");
-		info.setVersion("2.0.0");
-		info.setDescription("API to manage clinicapet.");
+		info.setTitle("demo API");
+		info.setVersion("1.0.0");
+		info.setDescription("API to manage demo.");
 		info.setContact(contact);
 		info.setLicense(license);
 		info.setTermsOfService("https://swagger.io/terms/");
