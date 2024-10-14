@@ -37,7 +37,7 @@ public class SwaggerConfig {
 
 		Info info = new Info();
 		info.setTitle("clinicapet API");
-		info.setVersion("1.0.0");
+		info.setVersion("2.0.0");
 		info.setDescription("API to manage clinicapet.");
 		info.setContact(contact);
 		info.setLicense(license);
