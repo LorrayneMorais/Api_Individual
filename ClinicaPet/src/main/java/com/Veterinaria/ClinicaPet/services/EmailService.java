@@ -79,10 +79,6 @@ public class EmailService {
 			String emailText = "<h1>teste2</h1>" + "<p>teste2</p>" + "<p>teste2</p>"
 					+ "<p>teste2 " + dateTime.format(dateForm) + "</p>"
 
-					// ADICIONANDO IMAGEM NO E-MAIL
-
-					// O cid:flamengoMaiorTime se refere a imagem que vou embutir no
-					// email(identificador)
 					+ "<br><img src='cid:flamengoMaiorTime'>" + "<br>";
 
 			helper.setText(emailText, true);

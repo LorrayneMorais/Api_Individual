@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.com.api.teste.security.domain.User;
+import com.veterinaria.clinicapet.security.entities.User;
 
 //serve para autenticar o usuário, saber as autorizações que ele possui e se ele está habilitado ou desabilitado
 public class UserDetailsImpl implements UserDetails {

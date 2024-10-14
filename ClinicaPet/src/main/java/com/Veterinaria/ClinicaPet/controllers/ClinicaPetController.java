@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.clinicapet.clinicapet.services.EmailService;
+import com.veterinaria.clinicapet.services.EmailService;
 
 @RestController
 @RequestMapping("/clinicapet")

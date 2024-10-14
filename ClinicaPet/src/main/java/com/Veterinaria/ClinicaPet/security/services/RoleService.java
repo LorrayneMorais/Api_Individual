@@ -3,8 +3,8 @@ package com.veterinaria.clinicapet.security.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.api.teste.security.domain.Role;
-import br.com.api.teste.security.repositories.RoleRepository;
+import com.veterinaria.clinicapet.security.entities.Role;
+import com.veterinaria.clinicapet.security.repositories.RoleRepository;
 
 @Service
 public class RoleService {

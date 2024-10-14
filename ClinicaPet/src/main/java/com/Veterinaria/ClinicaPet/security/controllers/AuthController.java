@@ -18,27 +18,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.api.teste.security.domain.Role;
-import br.com.api.teste.security.domain.User;
-import br.com.api.teste.security.dto.JwtResponseDTO;
-import br.com.api.teste.security.dto.LoginRequestDTO;
-import br.com.api.teste.security.dto.MessageResponseDTO;
-import br.com.api.teste.security.dto.SignupRequestDTO;
-import br.com.api.teste.security.enums.RoleEnum;
-import br.com.api.teste.security.jwt.JwtUtils;
-import br.com.api.teste.security.repositories.RoleRepository;
-import br.com.api.teste.security.repositories.UserRepository;
-import br.com.api.teste.security.services.UserDetailsImpl;
+import com.veterinaria.clinicapet.security.entities.Role;
+import com.veterinaria.clinicapet.security.entities.User;
+import com.veterinaria.clinicapet.security.dto.JwtResponseDTO;
+import com.veterinaria.clinicapet.security.dto.LoginRequestDTO;
+import com.veterinaria.clinicapet.security.dto.MessageResponseDTO;
+import com.veterinaria.clinicapet.security.dto.SignupRequestDTO;
+import com.veterinaria.clinicapet.security.enums.RoleEnum;
+import com.veterinaria.clinicapet.security.jwt.JwtUtils;
+import com.veterinaria.clinicapet.security.repositories.RoleRepository;
+import com.veterinaria.clinicapet.security.repositories.UserRepository;
+import com.veterinaria.clinicapet.security.services.UserDetailsImpl;
 
-//permite solicitações de recursos de origens diferentes, mecanimos de segurança que impoe restrições 
-//permite que você controle quais origens podem acessar o end point
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 	@Autowired
-	AuthenticationManager authenticationManager; //pertence ao spring docs e é uma interface que gerencia a autenticação de usuários
-
+	AuthenticationManager authenticationManager; 
+	
 	@Autowired
 	UserRepository userRepository;
 
@@ -46,20 +45,20 @@ public class AuthController {
 	RoleRepository roleRepository;
 
 	@Autowired
-	PasswordEncoder encoder; //responsável por criptografar a senha, e comparar com uma senha armazenada usando o a sha-1 (algoritimo de dispersão seguro/secure hash) ou maior
-
+	PasswordEncoder encoder; 
+	
 	@Autowired
-	JwtUtils jwtUtils; //usado para gerar o token
+	JwtUtils jwtUtils; 
 
-	//faz o login de um usuario cadastrado préviamente no banco de dados
+	
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequestDTO loginRequest) {
 
-		//faz a autenticação
+		
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
-		//fornece acesso ao contexto de segurança atual, permite recuperar informações
+		
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		String jwt = jwtUtils.generateJwtToken(authentication);
 
@@ -71,7 +70,7 @@ public class AuthController {
 				new JwtResponseDTO(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
 	}
 
-	//faz o cadastro de um novo usuário
+	
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequestDTO signUpRequest) {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
@@ -82,7 +81,7 @@ public class AuthController {
 			return ResponseEntity.badRequest().body(new MessageResponseDTO("Erro: Email já utilizado!"));
 		}
 
-		// Cria a nova conta de usuario
+		
 		User user = new User(signUpRequest.getUsername(), signUpRequest.getEmail(),
 				encoder.encode(signUpRequest.getPassword()));
 
