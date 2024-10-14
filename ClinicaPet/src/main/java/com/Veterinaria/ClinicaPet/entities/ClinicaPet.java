@@ -1,5 +1,5 @@
-package com.Veterinaria.ClinicaPet.entities;
+package com.veterinaria.clinicapet.entities;
 
-public class ClinicaPet {
+public class clinicapet {
 
 }
