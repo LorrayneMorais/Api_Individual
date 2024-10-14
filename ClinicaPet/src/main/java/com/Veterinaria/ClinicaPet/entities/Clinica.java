@@ -28,13 +28,13 @@ public class Clinica {
     @Column(name="cur_cd_id")
     private Integer id;
 
-    @Column(name="cur_tx_nome_completo")
+    @Column(name="cur_tx_nome")
     private String nome;
 
-    @Column(name="cur_int_cpf")
+    @Column(name="cur_tx_endereco")
     private String endereco;
 
-    @Column(name="cur_int_cpf")
+    @Column(name="cur_int_pet_id")
     private Integer petid;
 
 	public String getNome() {
