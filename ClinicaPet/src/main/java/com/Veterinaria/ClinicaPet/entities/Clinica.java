@@ -1,71 +1,71 @@
 package com.veterinaria.clinicapet.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
-@Table(name="clinica")
+@Table(name = "clinica")
 public class Clinica {
 
-    public Clinica(Integer id, String nome, String endereco, Integer petid) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.endereco = endereco;
-		this.petid = petid;
-	}
-
-	public Clinica() {
-		
-	}
-
-	@Id 
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="cur_cd_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cur_cd_id")
     private Integer id;
 
-    @Column(name="cur_tx_nome")
+    @Column(name = "cur_tx_nome", nullable = false)
     private String nome;
 
-    @Column(name="cur_tx_endereco")
+    @Column(name = "cur_tx_endereco", nullable = false)
     private String endereco;
 
-    @Column(name="cur_int_pet_id")
-    private Integer petid;
+    @OneToMany(mappedBy = "clinica", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Pet> pets; // Lista de pets associados à clínica
 
-	public String getNome() {
-		return nome;
-	}
+    // Construtores
+    public Clinica() {
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public Clinica(String nome, String endereco) {
+        this.nome = nome;
+        this.endereco = endereco;
+    }
 
-	public String getEndereco() {
-		return endereco;
-	}
+    // Getters e Setters
+    public Integer getId() {
+        return id;
+    }
 
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public Integer getPetid() {
-		return petid;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	@Override
-	public String toString() {
-		return "Clinica [id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", petid=" + petid + "]";
-	}
-    
-    
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public List<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(List<Pet> pets) {
+        this.pets = pets;
+    }
+
+    @Override
+    public String toString() {
+        return "Clinica [id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", pets=" + pets + "]";
+    }
 }
-    

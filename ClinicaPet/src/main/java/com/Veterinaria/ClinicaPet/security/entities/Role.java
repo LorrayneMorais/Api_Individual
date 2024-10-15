@@ -1,6 +1,6 @@
 package com.veterinaria.clinicapet.security.entities;
 
-import br.com.api.teste.security.enums.RoleEnum;
+import com.veterinaria.clinicapet.security.enums.RoleEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.veterinaria.clinicapet.security.entities.User;
 
-@Repository("user") 
+@Repository
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
