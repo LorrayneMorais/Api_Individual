@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.Veterinaria</groupId>
 	<artifactId>clinicapet</artifactId>
-	<version>5.0.0</version>
+	<version>5.1.0</version>
 	<name>veterinaria-clinicapet</name>
 	<description>API - Segurança JWT</description>
 

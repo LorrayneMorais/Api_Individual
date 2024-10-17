@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "prontuario")
-public class prontuario {
+public class Prontuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,9 +37,9 @@ public class prontuario {
     @JoinColumn(name = "pet_id", nullable = false)
     private Pet pet;
 
-    public prontuario() {}
+    public Prontuario() {}
 
-    public prontuario(Date data, String procedimento, Float valorPago, String nomeCliente, Veterinario veterinario, Clinica clinica, Pet pet) {
+    public Prontuario(Date data, String procedimento, Float valorPago, String nomeCliente, Veterinario veterinario, Clinica clinica, Pet pet) {
         this.data = data;
         this.procedimento = procedimento;
         this.valorPago = valorPago;

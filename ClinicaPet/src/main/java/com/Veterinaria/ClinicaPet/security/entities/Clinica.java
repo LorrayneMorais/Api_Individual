@@ -2,6 +2,7 @@ package com.veterinaria.clinicapet.security.entities;
 
 import jakarta.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "clinica")
@@ -18,22 +19,28 @@ public class Clinica {
     @Column(name = "clinica_endereco", nullable = false)
     private String endereco;
 
-  
     @OneToMany(mappedBy = "clinica", cascade = CascadeType.ALL)
     private List<Pet> pets;
 
-  
     @OneToMany(mappedBy = "clinica", cascade = CascadeType.ALL)
     private List<Veterinario> veterinarios;
 
- 
-    public Clinica() {
-    }
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "clinica_users",
+        joinColumns = @JoinColumn(name = "clinica_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private Set<User> users;
+
+    public Clinica() {}
 
     public Clinica(String nome, String endereco) {
         this.nome = nome;
         this.endereco = endereco;
     }
+
+    // Getters e Setters
 
     public Integer getId() {
         return id;
@@ -73,5 +80,13 @@ public class Clinica {
 
     public void setVeterinarios(List<Veterinario> veterinarios) {
         this.veterinarios = veterinarios;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }
