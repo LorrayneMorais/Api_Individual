@@ -1,4 +1,4 @@
-package com.veterinaria.clinicapet.security;
+package com.Veterinaria.ClinicaPet.security;
 
 import java.io.IOException;
 import java.util.HashMap;

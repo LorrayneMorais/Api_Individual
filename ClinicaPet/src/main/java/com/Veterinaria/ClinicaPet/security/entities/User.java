@@ -1,4 +1,4 @@
-package com.veterinaria.clinicapet.security.entities;
+package com.Veterinaria.ClinicaPet.security.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

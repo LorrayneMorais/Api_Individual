@@ -1,4 +1,4 @@
-package com.veterinaria.clinicapet.security.enums;
+package com.Veterinaria.ClinicaPet.security.enums;
 
 
 public enum RoleEnum {

@@ -1,4 +1,4 @@
-package com.veterinaria.clinicapet.security;
+package com.Veterinaria.ClinicaPet.security;
 
 import java.util.Arrays;
 
@@ -21,7 +21,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.veterinaria.clinicapet.security.services.UserDetailsServiceImpl;
+import com.Veterinaria.ClinicaPet.security.services.UserDetailsServiceImpl;
 
 
 @Configuration
@@ -51,7 +51,7 @@ public class WebSecurityConfig {
 			
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers("/g6/**", "/auth/**", "/h2-console/**", "/roles/**", "/test/all/**",								
-								"/swagger-ui/**", "/v3/api-docs/**", "/actuator/**", "/ClinicaPet/**", "/Endereco/**").permitAll()						
+								"/swagger-ui/**", "/v3/api-docs/**", "/actuator/**", "/clinicapet/**", "/testecep/**", "/cadastrarveterinario/**", "/endereco/**").permitAll()						
 						.requestMatchers("/test/user/**").hasAnyRole("USER", "ADMIN")
 						.requestMatchers("/test/admin/**").hasRole("ADMIN")
 						

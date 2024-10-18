@@ -1,4 +1,4 @@
-package com.veterinaria.clinicapet.security.jwt;
+package com.Veterinaria.ClinicaPet.security.jwt;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -11,7 +11,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import com.veterinaria.clinicapet.security.services.UserDetailsImpl;
+import com.Veterinaria.ClinicaPet.security.services.UserDetailsImpl;
+
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

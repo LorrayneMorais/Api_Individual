@@ -1,61 +1,76 @@
-package com.veterinaria.clinicapet.security.entities;
+package com.Veterinaria.ClinicaPet.security.entities;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "endereco")
 public class Endereco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "endereco_id")
-    private Integer id;
+    private Long id;
 
-    @Column(name = "logradouro", nullable = false)
+    private String cep;
     private String logradouro;
+    private String complemento;
+    private String bairro;
+    private String localidade;
+    private String uf;
+    private String estado;
+    private String regiao;
 
-    @Column(name = "numero", nullable = false)
+  
+    @Column(name = "numero") // Definindo como NOT NULL no banco de dados
     private Integer numero;
 
-    @Column(name = "complemento")
-    private String complemento;
+//    @OneToOne(mappedBy = "endereco", cascade = CascadeType.ALL)
+//    private Clinica clinica;
 
-    @Column(name = "localidade", nullable = false)
-    private String localidade;  
+    // Construtores, getters e setters
 
-    @Column(name = "estado", nullable = false)
-    private String estado; 
+    public Endereco() {}
 
-    @Column(name = "uf", nullable = false)
-    private String uf; 
-
-    @Column(name = "regiao", nullable = false)
-    private String regiao;  
-
-    @Column(name = "cep", nullable = false)
-    private String cep;
+    public Endereco(String cep, String logradouro, String complemento, String bairro, String localidade, String regiao, String uf, String estado, Integer numero) {
+        this.cep = cep;
+        this.logradouro = logradouro;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.localidade = localidade;
+        this.uf = uf;
+        this.estado = estado;
+        this.regiao = regiao;
+        this.numero = numero;  
+    }
 
    
-    public Endereco() {
-    }
 
-    public Endereco(String logradouro, Integer numero, String complemento, String localidade, String estado, String uf, String regiao, String cep) {
+    public Endereco(String cep, Integer numero, String logradouro, String complemento, String bairro, String localidade,
+			String regiao, String uf, String estado) {
+    	this.cep = cep;
         this.logradouro = logradouro;
-        this.numero = numero;
         this.complemento = complemento;
+        this.bairro = bairro;
         this.localidade = localidade;
-        this.estado = estado;
         this.uf = uf;
+        this.estado = estado;
         this.regiao = regiao;
-        this.cep = cep;
-    }
+        this.numero = numero;
+	
+	}
 
-    public Integer getId() {
+	public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
     public String getLogradouro() {
@@ -66,20 +81,20 @@ public class Endereco {
         this.logradouro = logradouro;
     }
 
-    public Integer getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
-
     public String getComplemento() {
         return complemento;
     }
 
     public void setComplemento(String complemento) {
         this.complemento = complemento;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 
     public String getLocalidade() {
@@ -90,20 +105,20 @@ public class Endereco {
         this.localidade = localidade;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public String getUf() {
         return uf;
     }
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getRegiao() {
@@ -114,11 +129,26 @@ public class Endereco {
         this.regiao = regiao;
     }
 
-    public String getCep() {
-        return cep;
+    public Integer getNumero() {
+        return numero;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setNumero(Integer numero) {
+        this.numero = numero;
     }
+
+//    public Clinica getClinica() {
+//        return clinica;
+//    }
+//
+//    public void setClinica(Clinica clinica) {
+//        this.clinica = clinica;
+//    }
+
+//    @Override
+//    public String toString() {
+//        return "Endereco [id=" + id + ", cep=" + cep + ", logradouro=" + logradouro + ", complemento=" + complemento
+//                + ", bairro=" + bairro + ", localidade=" + localidade + ", uf=" + uf + ", estado=" + estado
+//                + ", regiao=" + regiao + ", numero=" + numero + ", clinica=" + clinica + "]";
+//    }
 }

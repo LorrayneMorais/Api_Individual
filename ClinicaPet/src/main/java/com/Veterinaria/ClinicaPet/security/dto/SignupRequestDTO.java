@@ -1,4 +1,4 @@
-package com.veterinaria.clinicapet.security.dto;
+package com.Veterinaria.ClinicaPet.security.dto;
 
 import java.util.Set;
 

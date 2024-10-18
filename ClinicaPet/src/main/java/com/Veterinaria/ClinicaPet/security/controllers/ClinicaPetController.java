@@ -1,4 +1,4 @@
-package com.veterinaria.clinicapet.security.controllers;
+package com.Veterinaria.ClinicaPet.security.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -6,16 +6,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.veterinaria.clinicapet.security.dto.EnderecoRequestDTO;
-import com.veterinaria.clinicapet.security.dto.VeterinarioRequestDTO;
-import com.veterinaria.clinicapet.security.entities.Veterinario;
-import com.veterinaria.clinicapet.security.services.EmailService;
-import com.veterinaria.clinicapet.security.services.EnderecoService;
-import com.veterinaria.clinicapet.security.services.VeterinarioService;
-import com.veterinaria.clinicapet.utils.Util;
+import com.Veterinaria.ClinicaPet.security.dto.EnderecoRequestDTO;
+import com.Veterinaria.ClinicaPet.security.dto.EnderecoResponseDTO;
+import com.Veterinaria.ClinicaPet.security.dto.VeterinarioRequestDTO;
+import com.Veterinaria.ClinicaPet.security.entities.Veterinario;
+import com.Veterinaria.ClinicaPet.security.services.EmailService;
+import com.Veterinaria.ClinicaPet.security.services.EnderecoService;
+import com.Veterinaria.ClinicaPet.security.services.VeterinarioService;
+import com.Veterinaria.ClinicaPet.utils.Util;
 
 @RestController
 @RequestMapping("/clinicapet")
@@ -51,18 +51,18 @@ public class ClinicaPetController {
 		return "Email enviado com sucesso";
 	}
 
-	@PostMapping("/teste-cep")
-	public EnderecoRequestDTO testeEndereco(@RequestParam String cep, @RequestParam Integer numero,
-			@RequestParam String complemento) {
-		return enderecoService.consultarEndereco(cep, numero, complemento);
-	}
-
-//	@PostMapping("/teste-cep")
-//	public EnderecoResponseDTO testeEndereco(@RequestBody EnderecoRequestDTO enderecoDTO) {
-//		return enderecoService.consultarEndereco(enderecoDTO);
+//	@PostMapping("/testecep")
+//	public EnderecoRequestDTO testeEndereco(@RequestParam String cep, @RequestParam Integer numero,
+//			@RequestParam String complemento) {
+//		return enderecoService.consultarEndereco(cep, numero, complemento);
 //	}
 
-	@PostMapping("/cadastrar-veterinario")
+	@PostMapping("/testecep")
+	public EnderecoResponseDTO testeEndereco(@RequestBody EnderecoRequestDTO enderecoDTO) {
+		return enderecoService.consultarEndereco(enderecoDTO);
+	}
+
+	@PostMapping("/cadastrarveterinario")
 	public ResponseEntity<Veterinario> cadastrarVeterinario(@RequestBody VeterinarioRequestDTO veterinarioDTO) {
 	    Veterinario novoVeterinario = veterinarioService.cadastrarVeterinario(veterinarioDTO);
 	    return ResponseEntity.ok(novoVeterinario);

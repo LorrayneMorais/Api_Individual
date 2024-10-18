@@ -1,4 +1,4 @@
-package com.veterinaria.clinicapet.security.services;
+package com.Veterinaria.ClinicaPet.security.services;
 
 import java.util.Collection;
 import java.util.List;
@@ -9,10 +9,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.Veterinaria.ClinicaPet.security.entities.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import com.veterinaria.clinicapet.security.entities.User;
-
 
 public class UserDetailsImpl implements UserDetails {
 	

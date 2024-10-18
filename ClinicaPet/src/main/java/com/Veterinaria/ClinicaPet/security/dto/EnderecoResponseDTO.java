@@ -1,4 +1,6 @@
-package com.veterinaria.clinicapet.security.dto;
+package com.Veterinaria.ClinicaPet.security.dto;
+
+import com.Veterinaria.ClinicaPet.security.entities.Endereco;
 
 public class EnderecoResponseDTO {
 	
@@ -66,4 +68,7 @@ public class EnderecoResponseDTO {
 	public void setLocalidade(String localidade) {
 		this.localidade = localidade;
 	}
+	public Endereco toEndereco() {
+        return new Endereco(this.cep, this.numero, this.logradouro, this.complemento, this.bairro, this.localidade, this.regiao, this.uf, this.estado);
+    }
 }

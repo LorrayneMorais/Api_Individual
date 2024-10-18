@@ -1,10 +1,10 @@
-package com.veterinaria.clinicapet.security.controllers;
+package com.Veterinaria.ClinicaPet.security.controllers;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,18 +18,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.veterinaria.clinicapet.security.entities.Role;
-import com.veterinaria.clinicapet.security.entities.User;
-import com.veterinaria.clinicapet.security.dto.JwtResponseDTO;
-import com.veterinaria.clinicapet.security.dto.LoginRequestDTO;
-import com.veterinaria.clinicapet.security.dto.MessageResponseDTO;
-import com.veterinaria.clinicapet.security.dto.SignupRequestDTO;
-import com.veterinaria.clinicapet.security.enums.RoleEnum;
-import com.veterinaria.clinicapet.security.jwt.JwtUtils;
-import com.veterinaria.clinicapet.security.repositories.RoleRepository;
-import com.veterinaria.clinicapet.security.repositories.UserRepository;
-import com.veterinaria.clinicapet.security.services.UserDetailsImpl;
+import com.Veterinaria.ClinicaPet.security.dto.JwtResponseDTO;
+import com.Veterinaria.ClinicaPet.security.dto.LoginRequestDTO;
+import com.Veterinaria.ClinicaPet.security.dto.MessageResponseDTO;
+import com.Veterinaria.ClinicaPet.security.dto.SignupRequestDTO;
+import com.Veterinaria.ClinicaPet.security.entities.Role;
+import com.Veterinaria.ClinicaPet.security.entities.User;
+import com.Veterinaria.ClinicaPet.security.enums.RoleEnum;
+import com.Veterinaria.ClinicaPet.security.jwt.JwtUtils;
+import com.Veterinaria.ClinicaPet.security.repositories.RoleRepository;
+import com.Veterinaria.ClinicaPet.security.repositories.UserRepository;
+import com.Veterinaria.ClinicaPet.security.services.UserDetailsImpl;
 
+import jakarta.validation.Valid;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

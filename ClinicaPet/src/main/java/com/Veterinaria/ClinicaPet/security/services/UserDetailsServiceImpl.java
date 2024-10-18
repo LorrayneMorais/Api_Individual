@@ -1,4 +1,4 @@
-package com.veterinaria.clinicapet.security.services;
+package com.Veterinaria.ClinicaPet.security.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,9 +7,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.veterinaria.clinicapet.security.entities.User;
-import com.veterinaria.clinicapet.security.repositories.UserRepository;
-
+import com.Veterinaria.ClinicaPet.security.entities.User;
+import com.Veterinaria.ClinicaPet.security.repositories.UserRepository;
 
 @Service 
 

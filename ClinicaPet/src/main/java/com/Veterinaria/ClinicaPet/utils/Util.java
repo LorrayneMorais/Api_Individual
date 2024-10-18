@@ -1,10 +1,9 @@
-package com.veterinaria.clinicapet.utils;
+package com.Veterinaria.ClinicaPet.utils;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import com.veterinaria.clinicapet.security.dto.EnderecoResponseDTO;
-
+import com.Veterinaria.ClinicaPet.security.dto.EnderecoResponseDTO;
 
 @Component
 public class Util {

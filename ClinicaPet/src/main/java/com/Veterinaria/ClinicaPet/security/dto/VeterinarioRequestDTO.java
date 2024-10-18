@@ -1,7 +1,7 @@
-package com.veterinaria.clinicapet.security.dto;
+package com.Veterinaria.ClinicaPet.security.dto;
 
-import com.veterinaria.clinicapet.security.entities.Clinica;
-import com.veterinaria.clinicapet.security.entities.Veterinario;
+import com.Veterinaria.ClinicaPet.security.entities.Clinica;
+import com.Veterinaria.ClinicaPet.security.entities.Veterinario;
 
 public class VeterinarioRequestDTO {
 
