@@ -39,7 +39,18 @@ public class User {
     @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
     private Set<Clinica> clinicas = new HashSet<>();
 
-    public User() {}
+    @OneToMany(mappedBy = "user")
+    private Set<Pet> pets = new HashSet<>();
+    
+    public Set<Pet> getPets() {
+		return pets;
+	}
+
+	public void setPets(Set<Pet> pets) {
+		this.pets = pets;
+	}
+
+	public User() {}
 
     public User(String username, String email, String password) {
         this.username = username;

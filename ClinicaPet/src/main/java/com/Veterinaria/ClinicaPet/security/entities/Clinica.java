@@ -16,7 +16,7 @@ public class Clinica {
     @Column(name = "clinica_nome", nullable = false)
     private String nome;
 
-    // Associação @OneToOne com a entidade Endereco
+   
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;
@@ -24,71 +24,58 @@ public class Clinica {
     @OneToMany(mappedBy = "clinica", cascade = CascadeType.ALL)
     private List<Pet> pets;
 
-    @OneToMany(mappedBy = "clinica", cascade = CascadeType.ALL)
-    private List<Veterinario> veterinarios;
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "clinica_users",
         joinColumns = @JoinColumn(name = "clinica_id"),
-        inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
+        inverseJoinColumns = @JoinColumn(name = "user_id"))    
     private Set<User> users;
 
     public Clinica() {}
 
-    public Clinica(String nome, Endereco endereco) {
-        this.nome = nome;
-        this.endereco = endereco;
-    }
+	public Clinica(Integer id, String nome, Endereco endereco, List<Pet> pets, Set<User> users) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.endereco = endereco;
+		this.pets = pets;
+		this.users = users;
+	}
 
-    // Getters e Setters
+	public String getNome() {
+		return nome;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public Endereco getEndereco() {
+		return endereco;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public List<Pet> getPets() {
+		return pets;
+	}
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
+	public void setPets(List<Pet> pets) {
+		this.pets = pets;
+	}
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
+	public Set<User> getUsers() {
+		return users;
+	}
 
-    public List<Pet> getPets() {
-        return pets;
-    }
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
 
-    public void setPets(List<Pet> pets) {
-        this.pets = pets;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public List<Veterinario> getVeterinarios() {
-        return veterinarios;
-    }
-
-    public void setVeterinarios(List<Veterinario> veterinarios) {
-        this.veterinarios = veterinarios;
-    }
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
 }

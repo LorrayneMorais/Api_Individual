@@ -6,101 +6,105 @@ import jakarta.persistence.*;
 @Table(name = "pet")
 public class Pet {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cur_cd_id")
-    private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "cur_cd_id")
+	private Integer id;
 
-    @Column(name = "cur_tx_nome_pet", nullable = false)
-    private String nome;
+	@Column(name = "cur_tx_nome_pet", nullable = false)
+	private String nome;
 
-    @Column(name = "cur_int_idade", nullable = false)
-    private Integer idade;
+	@Column(name = "cur_int_idade", nullable = false)
+	private Integer idade;
 
-    @Column(name = "cur_tx_tipo", nullable = false)
-    private String tipo;
+	@Column(name = "cur_tx_tipo", nullable = false)
+	private String tipo;
 
-    @Column(name = "cur_tx_cliente_nome", nullable = false)
-    private String nomeCliente;
+	@ManyToOne
+	@JoinColumn(name = "user_int_id", referencedColumnName = "id")
+	private User user;
 
-    @Column(name = "cur_tx_cliente_endereco", nullable = false)
-    private String enderecoCliente;
+	public User getUser() {
+		return user;
+	}
 
-    @ManyToOne
-    @JoinColumn(name = "clinica_id", nullable = false)
-    private Clinica clinica;
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-    public Pet() {}
+	public Pet(Integer id, String nome, Integer idade, String tipo, User user, String enderecoCliente,
+			Clinica clinica) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.idade = idade;
+		this.tipo = tipo;
+		this.user = user;
+		this.enderecoCliente = enderecoCliente;
+		this.clinica = clinica;
+	}
 
-    public Pet(String nome, Integer idade, String tipo, String nomeCliente, String enderecoCliente, Clinica clinica) {
-        this.nome = nome;
-        this.idade = idade;
-        this.tipo = tipo;
-        this.nomeCliente = nomeCliente;
-        this.enderecoCliente = enderecoCliente;
-        this.clinica = clinica;
-    }
+	@Column(name = "cur_tx_cliente_endereco", nullable = false)
+	private String enderecoCliente;
 
-    public Integer getId() {
-        return id;
-    }
+	@ManyToOne
+	@JoinColumn(name = "clinica_id", nullable = false)
+	private Clinica clinica;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public Pet() {
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Integer getIdade() {
-        return idade;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setIdade(Integer idade) {
-        this.idade = idade;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getTipo() {
-        return tipo;
-    }
+	public Integer getIdade() {
+		return idade;
+	}
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
 
-    public String getNomeCliente() {
-        return nomeCliente;
-    }
+	public String getTipo() {
+		return tipo;
+	}
 
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
-    }
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
-    public String getEnderecoCliente() {
-        return enderecoCliente;
-    }
+	public String getEnderecoCliente() {
+		return enderecoCliente;
+	}
 
-    public void setEnderecoCliente(String enderecoCliente) {
-        this.enderecoCliente = enderecoCliente;
-    }
+	public void setEnderecoCliente(String enderecoCliente) {
+		this.enderecoCliente = enderecoCliente;
+	}
 
-    public Clinica getClinica() {
-        return clinica;
-    }
+	public Clinica getClinica() {
+		return clinica;
+	}
 
-    public void setClinica(Clinica clinica) {
-        this.clinica = clinica;
-    }
+	public void setClinica(Clinica clinica) {
+		this.clinica = clinica;
+	}
 
-    @Override
-    public String toString() {
-        return "Pet [id=" + id + ", nome=" + nome + ", idade=" + idade + ", tipo=" + tipo +
-               ", nomeCliente=" + nomeCliente + ", enderecoCliente=" + enderecoCliente +
-               ", clinica=" + clinica.getNome() + "]";
-    }
+	@Override
+	public String toString() {
+		return "Pet [id=" + id + ", nome=" + nome + ", idade=" + idade + ", tipo=" + tipo + ", nomeCliente="
+				+ ", enderecoCliente=" + enderecoCliente + ", clinica=" + clinica.getNome() + "]";
+	}
 }
