@@ -35,7 +35,7 @@ public class PetService {
 
 	public void cadastrarPet(PetResponseDTO pet) {
 		Pet newPet = new Pet();
-		newPet.setNome(pet.getNomeClinica());
+		newPet.setNome(pet.getNomePet());
 
 		Clinica clinica = clinicaRepository.buscarClinica(pet.getNomeClinica());
 		if (clinica == null) {

@@ -19,7 +19,7 @@ public class Endereco {
     private String regiao;
 
   
-    @Column(name = "numero") // Definindo como NOT NULL no banco de dados
+    @Column(name = "numero") 
     private Integer numero;
 
 //    @OneToOne(mappedBy = "endereco", cascade = CascadeType.ALL)

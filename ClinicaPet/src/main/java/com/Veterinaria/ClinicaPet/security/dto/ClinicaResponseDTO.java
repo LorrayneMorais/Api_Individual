@@ -6,6 +6,7 @@ public class ClinicaResponseDTO {
 	    private String enderecoClinica;
 	    
 	    
+
 		public String getNomeClinica() {
 			return nomeClinica;
 		}

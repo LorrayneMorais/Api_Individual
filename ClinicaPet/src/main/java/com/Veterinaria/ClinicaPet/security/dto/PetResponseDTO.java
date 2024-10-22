@@ -4,15 +4,13 @@ public class PetResponseDTO {
 	private String nomePet;
     private String nomeUser;
     private String nomeClinica;
-	public Object getnomeClinica;
-	public Object getNomeUser;
 
     public String getNomePet() {
         return nomePet;
     }
     public void setNomePet(String nomePet) {
         this.nomePet = nomePet;
-    }  
+    }
     public String getNomeClinica() {
         return nomeClinica;
     }

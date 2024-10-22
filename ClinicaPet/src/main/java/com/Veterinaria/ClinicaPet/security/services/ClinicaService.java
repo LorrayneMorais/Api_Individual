@@ -9,6 +9,8 @@ import com.Veterinaria.ClinicaPet.security.dto.ClinicaResponseDTO;
 import com.Veterinaria.ClinicaPet.security.entities.Clinica;
 import com.Veterinaria.ClinicaPet.security.repositories.ClinicaRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class ClinicaService {
 
@@ -27,5 +29,12 @@ public class ClinicaService {
 		Clinica newClinica = new Clinica();
 		newClinica.setNome(Clinica.getNomeClinica());
 	}
-
+	
+	 public void deletarClinica(Integer id) {
+	        if (clinicaRepository.existsById(id)) {
+	            clinicaRepository.deleteById(id);
+	        } else {
+	            throw new EntityNotFoundException("Clínica não encontrada com ID: " + id);
+	        }
+	 }
 }
