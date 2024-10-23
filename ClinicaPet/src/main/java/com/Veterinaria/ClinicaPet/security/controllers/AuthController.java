@@ -1,5 +1,6 @@
 package com.Veterinaria.ClinicaPet.security.controllers;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.Veterinaria.ClinicaPet.security.dto.JwtResponseDTO;
 import com.Veterinaria.ClinicaPet.security.dto.LoginRequestDTO;
@@ -28,6 +31,7 @@ import com.Veterinaria.ClinicaPet.security.enums.RoleEnum;
 import com.Veterinaria.ClinicaPet.security.jwt.JwtUtils;
 import com.Veterinaria.ClinicaPet.security.repositories.RoleRepository;
 import com.Veterinaria.ClinicaPet.security.repositories.UserRepository;
+import com.Veterinaria.ClinicaPet.security.services.FotoService;
 import com.Veterinaria.ClinicaPet.security.services.UserDetailsImpl;
 
 import jakarta.validation.Valid;
@@ -51,6 +55,8 @@ public class AuthController {
 	@Autowired
 	JwtUtils jwtUtils; 
 
+	@Autowired
+	FotoService fotoService;
 	
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequestDTO loginRequest) {
@@ -70,10 +76,9 @@ public class AuthController {
 		return ResponseEntity.ok(
 				new JwtResponseDTO(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
 	}
-
 	
 	@PostMapping("/signup")
-	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequestDTO signUpRequest) {
+	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequestDTO signUpRequest, @RequestParam MultipartFile foto) throws IOException {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
 			return ResponseEntity.badRequest().body(new MessageResponseDTO("Erro: Username já utilizado!"));
 		}
@@ -118,7 +123,9 @@ public class AuthController {
 
 		user.setRoles(roles);
 		userRepository.save(user);
-
+		fotoService.cadastrarFoto(foto, user);
+		
+		
 		return ResponseEntity.ok(new MessageResponseDTO("Usuário registrado com sucesso!"));
 	}
 }
