@@ -14,6 +14,7 @@ public class EmailController {
 	@Autowired
 	EnderecoService enderecoService;
 
+	
 	@GetMapping
 	public String writerTeste() {
 		emailService.writerTeste();
