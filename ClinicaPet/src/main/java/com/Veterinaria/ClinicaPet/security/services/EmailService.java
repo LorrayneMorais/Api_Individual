@@ -1,6 +1,5 @@
 package com.Veterinaria.ClinicaPet.security.services;
 
-import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
@@ -73,30 +72,14 @@ public class EmailService {
 
 		try {
 			MimeMessageHelper helper = new MimeMessageHelper(message, true);
-			helper.setSubject("Teste2");
+			helper.setSubject("cadastro concluido");
 			helper.setTo("lo.moraisb@gmail.com");
 
-			String emailText = "<h1>teste2</h1>" + "<p>teste2</p>" + "<p>teste2</p>"
-					+ "<p>teste2 " + dateTime.format(dateForm) + "</p>"
-
-					+ "<br><img src='cid:flamengoMaiorTime'>" + "<br>";
+			String emailText = "<h1>cadastro concluido</h1>" + "<p>Seu cadastro fio concluido com susseso</p>" 
+					+ "<p>Clinica Lotus Agradece seu cadastro! " + dateTime.format(dateForm) + "</p>";
 
 			helper.setText(emailText, true);
 
-			// Referencia da imagem embutida no email, indicando o caminho da imagem
-			//File flamengoMaiorTime = new File("C:\\Serratec\\api\\imagens\\images.jpeg");
-
-			// Adiciona a imagem no e-mail com o identificad criado 'flamengoMaiorTime'.
-			//helper.addInline("flamengoMaiorTime", flamengoMaiorTime);
-
-			// Caminho da imagem que sera adicionado ao e-mail
-			//File images = new File("C:\\Serratec\\api\\imagens\\images.jpeg");
-
-			// Adiciona a imagem como um anexo. o nome "imagens" será o nome do arquivo no
-			// e-mail.
-			//helper.addAttachment("images.jpg", images);
-
-			// Envia o e-mail
 			javaMailSender.send(message);
 			return "email enviado com sucesso!";
 		} catch (MessagingException e) {
@@ -104,36 +87,5 @@ public class EmailService {
 		}
 	}
 
-	public void mailSend() {
-		LocalDateTime localDate = LocalDateTime.now();
-		DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-		DecimalFormat dec = new DecimalFormat("R$ #,##0.00");
-		MimeMessage message = javaMailSender.createMimeMessage();
-
-		try {
-			MimeMessageHelper helper = new MimeMessageHelper(message, true);
-			helper.setSubject("teste3");
-			helper.setTo("lo.moraisb@gmail.com");
-			StringBuilder sBuider = new StringBuilder();
-			sBuider.append("<html>\r\n");
-			sBuider.append("	<body>\r\n");
-			sBuider.append(localDate.format(dateTime));
-			sBuider.append("		<div align=\"center\">\r\n");
-			sBuider.append("			<p>Aula</p>\r\n");
-			sBuider.append("		</div>\r\n");
-			sBuider.append("		<br>\r\n");
-			sBuider.append("		<table align=\"center\" border = '2' cellpadding = '2'>\r\n");
-			sBuider.append("			<tr><th>Nome</th><th>Preço</th></tr>\r\n");
-			sBuider.append("			<tr><td>Esponja</td><td>" + dec.format(5) + "</td></tr>\r\n");
-			sBuider.append("		</table>\r\n");
-			sBuider.append("	</body>\r\n");
-			sBuider.append("</html>");
-
-			helper.setText(sBuider.toString(), true);
-			javaMailSender.send(message);
-		} catch (MessagingException e) {
-			System.out.println("Erro ao enviar email" + e.getMessage());
-		}
-
-	}
+	
 }
